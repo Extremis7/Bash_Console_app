@@ -1,2 +1,17 @@
-# Bash_Console_app
-A repo created to complement my efforts in PowerShell scripting in an enterprise envirorment. Mainly system admin and adhoc scans.
+<!-- Need to get this the nice formatting when you get the chance.  -->
+
+
+## Purpose
+Writing a Linux equivalent to what I've created in an enterprise environment thus far and learn more about bash scripting. Just in case you know? 
+
+## How to run
+### Changing permissions
+```chmod +x run_app.sh```
+
+```chmod +x tester.sh``` (if you have it)
+
+### Run the Console app
+In terminal: ```./run_app.sh```
+
+### Test what you're doing
+In terminal: ```./tester.sh```
