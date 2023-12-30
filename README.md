@@ -2,7 +2,7 @@
 
 
 ## Purpose
-Writing a Linux equivalent to what I've created in an enterprise environment thus far and learn more about bash scripting. Just in case you know? After creating the ad hoc scans, I'll need to find features to implement. 
+Writing a Linux equivalent to what I've created in an enterprise environment thus far and learn more about bash scripting. Just in case you know? After creating the ad hoc scans, I plan to implement options to simulate network traffic for packet analysis. 
 
 ## How to run
 ### Changing permissions
