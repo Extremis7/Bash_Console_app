@@ -92,7 +92,7 @@ configure_network() {
 
 # Function to simulate traffic
 simulate_traffic() {
-    # Generate sample HTTP/HTTPS traffic
+    # Send sample traffic to other machines while waiting for signal from Host computer to start ping flood simulation.
 }
 
 # Main function to orchestrate the setup
