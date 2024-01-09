@@ -6,7 +6,7 @@ HTTPS_PORT=443
 
 # Function to check for necessary dependencies
 check_dependencies() {
-    cho "Checking for necessary dependencies..."
+    echo "Checking for necessary dependencies..."
 
     # Check for Python
     if ! command -v python3 &> /dev/null; then
