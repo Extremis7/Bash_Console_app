@@ -1,4 +1,5 @@
-#!/bin/bash
+# if you insert a shebang here, it will produce unexpected
+# behavior when the script is sourced from the main script.
 
 # Global variables
 HTTP_PORT=80
@@ -32,18 +33,21 @@ setup_http_https_server() {
     mkdir -p "$SERVER_DIR"
     cd "$SERVER_DIR"
 
-    # Create a simple Python script for HTTP/HTTPS server
-    create_python_server_script
-
+    # Key-pair needs to be created before server script.
     # Generate self-signed SSL certificate for HTTPS
     if ! [ -f "server.crt" ] || ! [ -f "server.key" ]; then
         echo "Generating self-signed SSL certificate..."
         openssl req -x509 -newkey rsa:4096 -keyout server.key -out server.crt -days 365 -nodes -subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN=www.example.com"
     fi
 
+    # Create a simple Python script for HTTP/HTTPS server
+    # create_python_server_script
+    echo "Here is where the Python script will be created."
+
     echo "HTTP/HTTPS server setup is complete."
     cd ../
     # Consider deleting the server directory after the scan is complete
+    # line has been tested and works as expected.
     # rm -rf "$SERVER_DIR"
 }
 
@@ -60,7 +64,7 @@ create_python_server_script() {
     httpd = http.server.HTTPServer(("", port), http.server.SimpleHTTPRequestHandler)
 
     https_port = int(os.environ.get("HTTPS_PORT", 443))
-    httpd.socket = ssl.wrap_socket(httpd.socket, certfile='./server.crt', keyfile='./server.key', server_side=True)
+    httpd.socket = ssl.wrap_socket(httpd.socket, certfile='server.crt', keyfile='server.key', server_side=True)
 
     print(f"Serving HTTP on port {port} and HTTPS on port {https_port}")
     httpd.serve_forever()
@@ -86,27 +90,24 @@ EOF
 
 
 # Function to configure the network
-configure_network() {
-    # Network configurations for VM
-}
+# configure_network() {
+#     # Network configurations for VM
+# }
 
 # Function to simulate traffic
-simulate_traffic() {
-    # Send sample traffic to other machines while waiting for signal from Host computer to start ping flood simulation.
-}
+# simulate_traffic() {
+#     # Send sample traffic to other machines while waiting for signal from Host computer to start ping flood simulation.
+# }
 
 # Main function to orchestrate the setup
-main() {
-    check_dependencies
-    setup_http_https_server
-    configure_network
-    # From here we'll create a listener for a signal from Host computer to start ping flood part of simulation.
-    # Constructing a placeholder for now.
-    # while ! [ -f "start_ping_flood" ]; do
-        simulate_traffic    
-    #     sleep 1
-    # done
-}
-
-# Run the main function
-main
+# setup_machine_1() {
+#     # check_dependencies
+#     # setup_http_https_server
+#     # # configure_network
+#     # From here we'll create a listener for a signal from Host computer to start ping flood part of simulation.
+#     # Constructing a placeholder for now.
+#     # while ! [ -f "start_ping_flood" ]; do
+#         # simulate_traffic    
+#     #     sleep 1
+#     # done
+# }
